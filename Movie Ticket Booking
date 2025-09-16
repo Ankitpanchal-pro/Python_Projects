@@ -1,0 +1,117 @@
+class moviename:
+    def movies(self):
+       
+                movie="""
+                        1.The Godfather
+                        2.The Shawshank Redemption
+                        3.Top Gun: Maverick
+                        4.Fast & Furious series
+                    """
+                print(movie)
+        
+class movietype(moviename):
+    def movie_type(self):
+        movie=0
+        ch=int(input("Enter Choice :"))
+        if ch==1:
+            movie="The Godfather"
+        elif ch==2:
+            movie="The Shawshank Redemption"
+        elif ch==3:
+            movie="Top Gun: Maverick"
+        elif ch==4:
+            movie="Fast & Furious series"
+        else:
+            print("Invalid Choice !!")
+        print("You selected :",movie)
+        
+class seat(movietype):
+    def seat_type(self):
+        seat="""
+        <------select Your catagory------>
+        Press 1 for executive    : 100
+        Press 2 for premium      : 200
+        Press 3 for plattinium   : 500
+        """
+        print(seat)
+        
+        price={1:100, 2:200, 3:500}
+        block=[]
+       
+                   
+        executive_seat=list(range(1,15))
+        premium_seat=list(range(16,30))
+        plattinium_seat=list(range(31,40))
+        while True:
+            ch=int(input("Choose your seat-catagory (1.executive  2.premium  3.plattinium  4.exit ):"))
+            seat_pr=price.get(ch)
+            try:
+                if ch==4:
+                    print("Thanks for booking !!")
+                    break
+                
+                if ch == 1:
+                    available = []
+                    for seat in executive_seat:
+                        if seat not in block:
+                            available.append(seat)
+                        print("Executive seats available:", available) 
+                        category = executive_seat
+                    
+                elif ch==2:
+                    available=[]
+                    for seat in premium_seat:
+                        if seat not in block:
+                            available.append(seat)
+                    print("premium seats available:",available)
+                    category = premium_seat
+                    
+                elif ch == 3:
+                    available = []
+                    for seat in plattinium_seat:
+                        if seat not in block:
+                            available.append(seat)
+                    print("plattinium seats available:", available)
+                    category = plattinium_seat
+                    
+                else:
+                    print("Invalid Choice !!")
+                    
+                book=int(input("How many seats you want to Book :"))
+                for i in range(book):
+                    n=int(input("Select your seat Number :"))
+                    if n not in category:
+                        print(f"seat {n} does not belong to this catagory !")
+                    elif n in block:
+                        print("Already Booked !!")
+                    else:
+                        block.append(n)
+                        print(f"seat {n} booked Successfully !! ")
+                        # total_amount+=price[ch]
+                print("Currently Booked seats :",block)
+                remaining=[]
+                for i in category:
+                    if i not in block:
+                        remaining.append(i)
+                        
+                print(f"All booked seate's in this order :{block}")
+                print(f"Remaining seats Now :{remaining}")
+                    
+                base_price=seat_pr*book
+                gst=base_price*0.18
+                final=base_price+gst
+                print("---------------------------------")
+                print("your total bill is:",final)
+                print("---------------------------------")
+            
+            except Exception as a:
+                print(a)
+
+        
+      
+obj = seat()
+obj.movies()
+obj.movie_type()
+obj.seat_type()
+
+            
