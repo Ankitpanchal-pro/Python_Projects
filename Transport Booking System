@@ -1,0 +1,52 @@
+class Transport():
+    def book_ticket(self,name,seat):
+        Modes="""
+           1> Bus
+           2> Train
+           3> Flight
+           4> Exit
+        """
+        print(Modes)
+        
+class Bus(Transport):
+    def book_ticket(self,name,seat):
+        price_per_seat=150
+        total=price_per_seat * seat
+        print(f"[bus booking] {name},you booked {seat} seat's.Total fare is:{total}.Rs")
+        
+        
+class Train(Transport):
+    def book_ticket(self, name, seat):
+        price_per_seat=500
+        total=price_per_seat * seat
+        print(f"[Train booking] {name},You booked {seat} seat's.Total fare is:{total}.Rs")
+        
+        
+class Flight(Transport):
+    def book_ticket(self, name, seat):
+        price_per_seat=2000
+        gst=0.1
+        discount=0.1 if seat >= 3 else 0
+        total=price_per_seat * seat
+        total-=total * discount
+        total+=total*gst
+        print(f"[Flight Booking] {name},you Booked {seat} seat's.Total fare is :{total}.Rs")
+        
+        
+print("---------------------------Ticket Booking------------------------------")
+print(" 1.Bus\n 2.Train\n 3.Flight")
+choice=input("Enter Your Choice :")
+name=input("Enter Your Name :")
+seat=int(input("How Many seats you want to book :"))
+print("---------------------------------------------------------")
+
+if choice=="1":
+    Transport=Bus()
+elif choice=="2":
+    Transport=Train()
+elif choice=="3":
+    Transport=Flight()
+else:
+    Transport=Transport()
+    
+Transport.book_ticket(name,seat)
