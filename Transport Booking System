@@ -50,3 +50,18 @@ else:
     Transport=Transport()
     
 Transport.book_ticket(name,seat)
+
+
+
+
+Project Description: Transport Booking System
+
+This mini-project demonstrates the concept of polymorphism in Python using a real-world scenario of a transport booking system.
+A base class Transport defines the general structure.
+Three derived classes (Bus, Train, Flight) override the book_ticket() method to implement their own booking logic.
+Each class calculates the fare differently:
+Bus → ₹150 per seat.
+Train → ₹500 per seat.
+Flight → ₹2000 per seat with additional rules: 10% discount on 3+ seats, plus 10% GST.
+The user chooses the mode of transport, enters their name and number of seats, and the system prints a customized booking confirmation with the total fare.
+This project highlights method overriding, inheritance, and polymorphism in Python, while simulating a simple real-world ticket booking system.
